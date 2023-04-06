@@ -6,21 +6,14 @@ import 'package:valorant/view/screens/home.dart';
 import 'package:valorant/constant/constant.dart';
 import 'package:valorant/data/model/onboarding_model.dart';
 
-
-class Onbording extends StatefulWidget {
+class OnBoarding extends StatefulWidget {
   @override
-  State<Onbording> createState() => _OnbordingState();
+  State<OnBoarding> createState() => _OnBoardingState();
 }
 
-class _OnbordingState extends State<Onbording> {
+class _OnBoardingState extends State<OnBoarding> {
   int currentIndex = 0;
-  late PageController pageController;
-
-  @override
-  void initState() {
-    pageController = PageController(initialPage: 0);
-    super.initState();
-  }
+  late PageController pageController = PageController();
 
   @override
   void dispose() {
@@ -30,15 +23,15 @@ class _OnbordingState extends State<Onbording> {
 
   Container buildDot(int index, BuildContext context, Color color) {
     return Container(
-      height: 10,
-      width: currentIndex == index ? 25 : 10,
-      margin: EdgeInsets.only(right: 5),
-      decoration:
-      BoxDecoration(borderRadius: BorderRadius.circular(20), color:
-      currentIndex==index ? Color(0xffBD3944):Color(0xffD9D9D9),
-
+      height: MediaQuery.of(context).size.height * 0.0125,
+      width: currentIndex == index
+          ? MediaQuery.of(context).size.width * 0.060
+          : MediaQuery.of(context).size.width * 0.025,
+      margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.0125),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.055),
+        color: currentIndex == index ? Color(0xffBD3944) : Color(0xffD9D9D9),
       ),
-
     );
   }
 
@@ -50,7 +43,7 @@ class _OnbordingState extends State<Onbording> {
         children: [
           Expanded(
             child: PageView.builder(
-              controller:  pageController,
+              controller: pageController,
               itemCount: contents.length,
               onPageChanged: (int index) {
                 setState(() {
@@ -96,7 +89,7 @@ class _OnbordingState extends State<Onbording> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 contents.length,
-                    (index) =>  buildDot(
+                (index) => buildDot(
                     index,
                     context,
                     currentIndex == pages.length - index
@@ -114,20 +107,18 @@ class _OnbordingState extends State<Onbording> {
             width: 360,
             child: TextButton(
               child: Text(
-                  currentIndex == contents.length - 1
-                      ? "Continue"
-                      : "Next",
+                  currentIndex == contents.length - 1 ? "Continue" : "Next",
                   style: Constant.onBoardingButtonTextStyle),
               onPressed: () async {
-                setState(()async {
-                  if ( currentIndex == contents.length - 1) {
+                setState(() async {
+                  if (currentIndex == contents.length - 1) {
                     SharedPreferences prefInst =
-                    await SharedPreferences.getInstance();
+                        await SharedPreferences.getInstance();
                     prefInst.setBool('isIntroRead', true);
 
                     // ignore: use_build_context_synchronously
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (ctx)=>const Home()));
+                        MaterialPageRoute(builder: (ctx) => const Home()));
                   }
                   pageController.nextPage(
                     duration: const Duration(milliseconds: 100),

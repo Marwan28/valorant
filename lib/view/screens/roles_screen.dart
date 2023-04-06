@@ -5,14 +5,14 @@ import 'package:valorant/view/widgets/agents_list.dart';
 import 'package:valorant/data/model/character_model.dart';
 import 'package:valorant/cubit/character_cubit.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class RolesScreen extends StatefulWidget {
+  const RolesScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<RolesScreen> createState() => _RolesScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>{
+class _RolesScreenState extends State<RolesScreen>{
   List<Character> characters = [];
   List<Character> controllers = [];
   List<Character> duelists = [];

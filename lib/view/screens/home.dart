@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:valorant/view/screens/agents_screen.dart';
-import 'package:valorant/view/screens/home_screen.dart';
+import 'package:valorant/view/screens/roles_screen.dart';
 
 import 'package:valorant/cubit/character_cubit.dart';
 
@@ -31,7 +31,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    List _pages = [const HomeScreen(), const AgentsScreen()];
+    List _pages = [const RolesScreen(), const AgentsScreen()];
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

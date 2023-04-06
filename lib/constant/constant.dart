@@ -21,7 +21,7 @@ class Constant {
 
   static Color onBoardingTitleColor = const Color(0xff222221);
   static Color onBoardingDescColor = const Color(0xffB3B3B3);
-  static Color onBoardingButtonColor = const Color(0xffBD3944);
+  static Color onBoardingButtonColor = const Color(0xffce3d3a);
   static Color primaryColor = const Color(0xffBD3944);
   static Color onBoardingDotsColor = const Color(0xffD9D9D9);
 

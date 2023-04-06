@@ -28,7 +28,7 @@ void main() async{
             splash: 'assets/images/logo.png',
             nextScreen: prefInst.getBool('isIntroRead') == true
                 ?   const App()
-                :   Onbording(),
+                :   OnBoarding(),
             splashTransition: SplashTransition.fadeTransition,
 
             backgroundColor:   Colors.white
